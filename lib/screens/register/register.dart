@@ -1,6 +1,8 @@
 import "package:flutter/material.dart";
 import 'package:flutter_starter_stisla/components/background.dart';
 
+import '../login/login.dart';
+
 class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
 
@@ -17,13 +19,37 @@ class RegisterScreen extends StatelessWidget {
               alignment: Alignment.centerLeft,
               padding: const EdgeInsets.symmetric(horizontal: 40),
               child: const Text(
-                "LOGIN",
+                "REGISTER",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF2661FA),
                   fontSize: 36,
                 ),
                 textAlign: TextAlign.left,
+              ),
+            ),
+            SizedBox(
+              height: size.height * 0.03,
+            ),
+            Container(
+              alignment: Alignment.center,
+              margin: const EdgeInsets.symmetric(horizontal: 40),
+              child: const TextField(
+                decoration: InputDecoration(
+                  labelText: "Name",
+                ),
+              ),
+            ),
+            SizedBox(
+              height: size.height * 0.03,
+            ),
+            Container(
+              alignment: Alignment.center,
+              margin: const EdgeInsets.symmetric(horizontal: 40),
+              child: const TextField(
+                decoration: InputDecoration(
+                  labelText: "Mobile Number",
+                ),
               ),
             ),
             SizedBox(
@@ -49,17 +75,6 @@ class RegisterScreen extends StatelessWidget {
                   labelText: "Password",
                 ),
                 obscureText: true,
-              ),
-            ),
-            Container(
-              alignment: Alignment.centerRight,
-              margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
-              child: const Text(
-                "Forgot your password?",
-                style: TextStyle(
-                  fontSize: 12,
-                  color: Color(0xFF2661FA),
-                ),
               ),
             ),
             SizedBox(
@@ -88,7 +103,7 @@ class RegisterScreen extends StatelessWidget {
                   ),
                   padding: const EdgeInsets.all(0),
                   child: const Text(
-                    "LOGIN",
+                    "SIGN UP",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -102,11 +117,13 @@ class RegisterScreen extends StatelessWidget {
               margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
               child: GestureDetector(
                 onTap: () => {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => RegisterScreen()))
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const LoginScreen()))
                 },
                 child: const Text(
-                  "Don't Have an Account? Sign Up",
+                  "Already Have an Account? Sign In",
                   style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
