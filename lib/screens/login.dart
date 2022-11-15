@@ -1,10 +1,44 @@
+import 'dart:convert';
 import "package:flutter/material.dart";
 import 'package:flutter_starter_stisla/components/background.dart';
+import 'package:flutter_starter_stisla/helpers/http_helpers.dart';
+import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
+import 'register.dart';
+import 'home.dart';
 
-import '../login/login.dart';
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
 
-class RegisterScreen extends StatelessWidget {
-  const RegisterScreen({super.key});
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  TextEditingController _email = TextEditingController();
+  TextEditingController _password = TextEditingController();
+  Future<void> loginPost() async {
+    SharedPreferences _prefs = await SharedPreferences.getInstance();
+    var headers = {'Content-Type': 'application/json'};
+    var body = {
+      'email': _email.text,
+      'password': _password.text,
+      'device_name': 'mobile',
+    };
+    final url = Uri.parse('${HttpHelper.baseUrl}/auth/login');
+    http.Response response = await http.post(url, body: body);
+
+    if (response.statusCode == 200) {
+      var json = jsonDecode(response.body);
+      var token = json['token'];
+      _prefs.setString('token', token);
+      // ignore: use_build_context_synchronously
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => const HomeScreen()));
+    } else {
+      print('login salah');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +53,7 @@ class RegisterScreen extends StatelessWidget {
               alignment: Alignment.centerLeft,
               padding: const EdgeInsets.symmetric(horizontal: 40),
               child: const Text(
-                "REGISTER",
+                "LOGIN",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF2661FA),
@@ -28,42 +62,17 @@ class RegisterScreen extends StatelessWidget {
                 textAlign: TextAlign.left,
               ),
             ),
-            // Text Name
+            // Text Email
             SizedBox(
               height: size.height * 0.03,
             ),
             Container(
               alignment: Alignment.center,
               margin: const EdgeInsets.symmetric(horizontal: 40),
-              child: const TextField(
-                decoration: InputDecoration(
-                  labelText: "Name",
-                ),
-              ),
-            ),
-            // Text Mobile Number
-            SizedBox(
-              height: size.height * 0.03,
-            ),
-            Container(
-              alignment: Alignment.center,
-              margin: const EdgeInsets.symmetric(horizontal: 40),
-              child: const TextField(
-                decoration: InputDecoration(
-                  labelText: "Mobile Number",
-                ),
-              ),
-            ),
-            // Text Username
-            SizedBox(
-              height: size.height * 0.03,
-            ),
-            Container(
-              alignment: Alignment.center,
-              margin: const EdgeInsets.symmetric(horizontal: 40),
-              child: const TextField(
-                decoration: InputDecoration(
-                  labelText: "Username",
+              child: TextField(
+                controller: _email,
+                decoration: const InputDecoration(
+                  labelText: "Email",
                 ),
               ),
             ),
@@ -74,14 +83,27 @@ class RegisterScreen extends StatelessWidget {
             Container(
               alignment: Alignment.center,
               margin: const EdgeInsets.symmetric(horizontal: 40),
-              child: const TextField(
-                decoration: InputDecoration(
+              child: TextField(
+                controller: _password,
+                decoration: const InputDecoration(
                   labelText: "Password",
                 ),
                 obscureText: true,
               ),
             ),
-            // Button Sign Up
+            // Forgot Password
+            Container(
+              alignment: Alignment.centerRight,
+              margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
+              child: const Text(
+                "Forgot your password?",
+                style: TextStyle(
+                  fontSize: 12,
+                  color: Color(0xFF2661FA),
+                ),
+              ),
+            ),
+            // Button Login
             SizedBox(
               height: size.height * 0.05,
             ),
@@ -89,7 +111,9 @@ class RegisterScreen extends StatelessWidget {
               alignment: Alignment.centerRight,
               margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
               child: ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  loginPost();
+                },
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(80.0)),
@@ -108,7 +132,7 @@ class RegisterScreen extends StatelessWidget {
                   ),
                   padding: const EdgeInsets.all(0),
                   child: const Text(
-                    "SIGN UP",
+                    "LOGIN",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -117,7 +141,7 @@ class RegisterScreen extends StatelessWidget {
                 ),
               ),
             ),
-            // Page Sign In
+            // Page Sign Up
             Container(
               alignment: Alignment.centerRight,
               margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
@@ -126,10 +150,10 @@ class RegisterScreen extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const LoginScreen()))
+                          builder: (context) => const RegisterScreen()))
                 },
                 child: const Text(
-                  "Already Have an Account? Sign In",
+                  "Don't Have an Account? Sign Up",
                   style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.bold,

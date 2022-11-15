@@ -1,10 +1,10 @@
 import "package:flutter/material.dart";
 import 'package:flutter_starter_stisla/components/background.dart';
 
-import '../register/register.dart';
+import 'login.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatelessWidget {
+  const RegisterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class LoginScreen extends StatelessWidget {
               alignment: Alignment.centerLeft,
               padding: const EdgeInsets.symmetric(horizontal: 40),
               child: const Text(
-                "LOGIN",
+                "REGISTER",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Color(0xFF2661FA),
@@ -28,7 +28,7 @@ class LoginScreen extends StatelessWidget {
                 textAlign: TextAlign.left,
               ),
             ),
-            // Text Username
+            // Text Name
             SizedBox(
               height: size.height * 0.03,
             ),
@@ -37,7 +37,33 @@ class LoginScreen extends StatelessWidget {
               margin: const EdgeInsets.symmetric(horizontal: 40),
               child: const TextField(
                 decoration: InputDecoration(
-                  labelText: "Username",
+                  labelText: "Name",
+                ),
+              ),
+            ),
+            // Text Mobile Number
+            SizedBox(
+              height: size.height * 0.03,
+            ),
+            Container(
+              alignment: Alignment.center,
+              margin: const EdgeInsets.symmetric(horizontal: 40),
+              child: const TextField(
+                decoration: InputDecoration(
+                  labelText: "Mobile Number",
+                ),
+              ),
+            ),
+            // Text Email
+            SizedBox(
+              height: size.height * 0.03,
+            ),
+            Container(
+              alignment: Alignment.center,
+              margin: const EdgeInsets.symmetric(horizontal: 40),
+              child: const TextField(
+                decoration: InputDecoration(
+                  labelText: "Email",
                 ),
               ),
             ),
@@ -55,19 +81,7 @@ class LoginScreen extends StatelessWidget {
                 obscureText: true,
               ),
             ),
-            // Forgot Password
-            Container(
-              alignment: Alignment.centerRight,
-              margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
-              child: const Text(
-                "Forgot your password?",
-                style: TextStyle(
-                  fontSize: 12,
-                  color: Color(0xFF2661FA),
-                ),
-              ),
-            ),
-            // Button Login
+            // Button Sign Up
             SizedBox(
               height: size.height * 0.05,
             ),
@@ -94,7 +108,7 @@ class LoginScreen extends StatelessWidget {
                   ),
                   padding: const EdgeInsets.all(0),
                   child: const Text(
-                    "LOGIN",
+                    "SIGN UP",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -103,7 +117,7 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
             ),
-            // Page Sign Up
+            // Page Sign In
             Container(
               alignment: Alignment.centerRight,
               margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
@@ -112,10 +126,10 @@ class LoginScreen extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const RegisterScreen()))
+                          builder: (context) => const LoginScreen()))
                 },
                 child: const Text(
-                  "Don't Have an Account? Sign Up",
+                  "Already Have an Account? Sign In",
                   style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
