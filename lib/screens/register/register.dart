@@ -28,6 +28,7 @@ class RegisterScreen extends StatelessWidget {
                 textAlign: TextAlign.left,
               ),
             ),
+            // Text Name
             SizedBox(
               height: size.height * 0.03,
             ),
@@ -40,6 +41,7 @@ class RegisterScreen extends StatelessWidget {
                 ),
               ),
             ),
+            // Text Mobile Number
             SizedBox(
               height: size.height * 0.03,
             ),
@@ -52,6 +54,7 @@ class RegisterScreen extends StatelessWidget {
                 ),
               ),
             ),
+            // Text Username
             SizedBox(
               height: size.height * 0.03,
             ),
@@ -64,6 +67,7 @@ class RegisterScreen extends StatelessWidget {
                 ),
               ),
             ),
+            // Text Password
             SizedBox(
               height: size.height * 0.03,
             ),
@@ -77,6 +81,7 @@ class RegisterScreen extends StatelessWidget {
                 obscureText: true,
               ),
             ),
+            // Button Sign Up
             SizedBox(
               height: size.height * 0.05,
             ),
@@ -112,6 +117,7 @@ class RegisterScreen extends StatelessWidget {
                 ),
               ),
             ),
+            // Page Sign In
             Container(
               alignment: Alignment.centerRight,
               margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),

@@ -28,6 +28,7 @@ class LoginScreen extends StatelessWidget {
                 textAlign: TextAlign.left,
               ),
             ),
+            // Text Username
             SizedBox(
               height: size.height * 0.03,
             ),
@@ -40,6 +41,7 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
             ),
+            // Text Password
             SizedBox(
               height: size.height * 0.03,
             ),
@@ -53,6 +55,7 @@ class LoginScreen extends StatelessWidget {
                 obscureText: true,
               ),
             ),
+            // Forgot Password
             Container(
               alignment: Alignment.centerRight,
               margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
@@ -64,6 +67,7 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
             ),
+            // Button Login
             SizedBox(
               height: size.height * 0.05,
             ),
@@ -99,6 +103,7 @@ class LoginScreen extends StatelessWidget {
                 ),
               ),
             ),
+            // Page Sign Up
             Container(
               alignment: Alignment.centerRight,
               margin: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
