@@ -75,6 +75,9 @@ class _AddScreenState extends State<AddScreen> {
                   onPressed: () {
                     addData();
                   },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color.fromARGB(210, 52, 250, 38),
+                  ),
                   child: const Text("Tambah Data"),
                 ),
               ),
