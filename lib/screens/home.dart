@@ -221,7 +221,7 @@ class _HomePageState extends State<HomePage> {
                 "List Categories",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: Color(0xFF2661FA),
+                  color: Color.fromARGB(255, 116, 38, 250),
                   fontSize: 36,
                 ),
               ),
@@ -306,8 +306,8 @@ class _HomePageState extends State<HomePage> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(80.0),
                     gradient: const LinearGradient(colors: [
-                      Color.fromARGB(255, 255, 136, 34),
-                      Color.fromARGB(255, 255, 177, 41),
+                      Color.fromARGB(255, 255, 34, 170),
+                      Color.fromARGB(255, 255, 41, 98),
                     ]),
                   ),
                   padding: const EdgeInsets.all(0),
