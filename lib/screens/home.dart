@@ -221,7 +221,7 @@ class _HomePageState extends State<HomePage> {
                 "List Categories",
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(255, 116, 38, 250),
+                  color: Color.fromARGB(255, 52, 38, 250),
                   fontSize: 36,
                 ),
               ),

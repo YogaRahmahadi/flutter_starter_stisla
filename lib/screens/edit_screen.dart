@@ -1,6 +1,8 @@
 import 'dart:convert';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_starter_stisla/components/background.dart';
 import 'package:flutter_starter_stisla/screens/home.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -96,47 +98,58 @@ class _EditScreenState extends State<EditScreen> {
       appBar: AppBar(
         title: const Text('Edit Screen'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8),
-        child: Column(
-          children: [
-            TextFormField(
-              controller: nameController,
-              decoration: const InputDecoration(
-                labelText: 'Nama',
+      body: Background(
+        child: Padding(
+          padding: const EdgeInsets.all(8),
+          child: Column(
+            children: [
+              TextFormField(
+                controller: nameController,
+                decoration: const InputDecoration(
+                  labelText: 'Nama',
+                ),
               ),
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            SizedBox(
-              height: 50,
-              width: double.infinity,
-              child: Row(
-                children: [
-                  Expanded(
-                    child: ElevatedButton(
-                      onPressed: () {
-                        editData(widget.id);
-                      },
-                      child: const Text("Edit Data"),
-                    ),
-                  ),
-                  Expanded(
-                    child: ElevatedButton(
-                      onPressed: () {
-                        deleteData(widget.id);
-                      },
-                      child: const Text("Delete Data"),
-                    ),
-                  ),
-                ],
+              const SizedBox(
+                height: 8,
               ),
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-          ],
+              SizedBox(
+                height: 50,
+                width: 300,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          editData(widget.id);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromARGB(255, 52, 38, 250),
+                        ),
+                        child: const Text("Edit Data"),
+                      ),
+                    ),
+                    Container(
+                      width: 50,
+                    ),
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {
+                          deleteData(widget.id);
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Color.fromARGB(255, 250, 38, 38),
+                        ),
+                        child: const Text("Delete Data"),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+            ],
+          ),
         ),
       ),
     );
