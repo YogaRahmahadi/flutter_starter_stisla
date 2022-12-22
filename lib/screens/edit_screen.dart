@@ -113,7 +113,7 @@ class _EditScreenState extends State<EditScreen> {
                 height: 8,
               ),
               SizedBox(
-                height: 50,
+                height: 40,
                 width: 300,
                 child: Row(
                   children: [

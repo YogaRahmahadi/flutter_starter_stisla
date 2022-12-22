@@ -69,8 +69,8 @@ class _AddScreenState extends State<AddScreen> {
                 height: 8,
               ),
               SizedBox(
-                height: 50,
-                width: double.infinity,
+                height: 40,
+                width: 150,
                 child: ElevatedButton(
                   onPressed: () {
                     addData();
